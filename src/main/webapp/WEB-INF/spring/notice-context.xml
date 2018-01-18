@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="com.iu.notice.NoticeDAO" id="NoticeDAO">
+		<constructor-arg name="sqlSession" ref="sqlSession"/> <!-- 이 방법은 "생성자"로 만들었을때 -->
+	</bean>
+	<bean class="com.iu.notice.NoticeService" id="NoticeService"> <!-- 이 방법은 "set"으로 만들었을때 -->
+		<property name="noticeDAO" ref="NoticeDAO"></property>
+	</bean>
+
+</beans>
