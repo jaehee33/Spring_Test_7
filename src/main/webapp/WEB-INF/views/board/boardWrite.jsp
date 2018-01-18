@@ -51,13 +51,16 @@ $(function(){
 		title: <input type="text" name="title"> 
 		writer: <input type="text" name="writer">
 		contents: <input type="text" name="contents">
+		
+		<form action="./${board}Write" method="POST" enctype="multipart/form-data">
 		<div id="result">
 			<div id="ex">
-				<input type="file" name="file"><span class="x">xxxxxxx</span>
+				<input type="file" name="f1"><span class="x">xxxxxxx</span>
 			</div>
 		</div>
 		<p><input type="button" id="btn" value="fileAdd"></p>
 		<button>save</button>
+		</form>
 	</form>
 </body>
 </html>
