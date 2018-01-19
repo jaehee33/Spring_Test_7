@@ -25,6 +25,16 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	
+	@RequestMapping(value="qnaView", method=RequestMethod.GET)
+	public ModelAndView selectOne(int num) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		BoardDTO boardDTO = qnaService.selectOne(num);
+		mv.addObject("view", boardDTO);
+		mv.addObject("board", "qna");
+		mv.setViewName("board/boardView");
+		return mv;
+	}
+	
 	@RequestMapping(value="qnaList")
 	public ModelAndView selectList(ListData listData) throws Exception{
 		ModelAndView mv = new ModelAndView();

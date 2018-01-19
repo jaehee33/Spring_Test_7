@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
@@ -46,8 +47,6 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int insert(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception {
-		
-		
 		noticeDAO.insert(boardDTO);
 		FileSaver fileSaver = new FileSaver();
 		String filePath = session.getServletContext().getRealPath("resources/upload");

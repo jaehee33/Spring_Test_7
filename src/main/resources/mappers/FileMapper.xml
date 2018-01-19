@@ -6,6 +6,10 @@
   <!-- sql -->
   <mapper namespace="FileMapper">
   
+  	<select id="selectList" parameterType="int" resultType="FileDTO">
+  		select * from files where num=#{num}
+  	</select>
+  
   	<insert id="insert" parameterType="FileDTO">
   		insert into files values(board_seq.nextval,#{num},#{fname},#{oname})
   	</insert>

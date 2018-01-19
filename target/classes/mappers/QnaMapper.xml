@@ -32,9 +32,36 @@
   		order by ref desc, step asc) N) where R between 1 and 10
   	</select>
   	
-  	<select id="selectOne" parameterType="int" resultType="QnaDTO">
-  		select * from qna where num=#{num}
+<select id="selectOne" parameterType="int" resultMap="qnaResult2">
+  	select n.*, f.* from qna n, files f where n.num=#{num} and n.num=f.num(+)
   	</select>
+  	<resultMap type="QnaDTO" id="qnaResult2">
+  		<id property="num" column="num"/>
+  		<result property="writer" column="writer"/>
+  		<result property="title" column="title"/>
+  		<result property="contents" column="contents"/>
+  		<result property="reg_date" column="reg_date"/>
+  		<result property="hit" column="hit"/>
+  	<collection property="files" ofType="FileDTO" javaType="ArrayList">
+  		<id property="fn" column="fn"/>
+  		<result property="num" column="num"/>
+  		<result property="fname" column="fname"/>
+  		<result property="oname" column="oname"/>	
+  	</collection>
+  	</resultMap>
+  	
+  	
+  	<select id="selectOne2" parameterType="int" resultMap="qnaResult">
+  		select num n, writer w, title t, contents c, reg_date r, hit h from qna where num=#{num}
+  	</select>
+  	<resultMap type="QnaDTO" id="qnaResult">
+  		<id property="num" column="n"/>
+  		<result property="writer" column="w"/>
+  		<result property="title" column="t"/>
+  		<result property="contents" column="c"/>
+  		<result property="reg_date" column="r"/>
+  		<result property="hit" column="h"/>
+  	</resultMap>
   	
   	<insert id="insert" parameterType="QnaDTO">
   		<selectKey resultType="int" order="BEFORE" keyProperty="num">
