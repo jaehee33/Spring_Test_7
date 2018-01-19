@@ -2,6 +2,10 @@ package com.iu.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.iu.util.ListData;
 
 public interface BoardService {
@@ -11,7 +15,7 @@ public interface BoardService {
 	//one
 	public BoardDTO selectOne(int num) throws Exception;
 	//insert
-	public int insert(BoardDTO boardDTO) throws Exception;
+	public int insert(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception;
 	//update
 	public int update(BoardDTO boardDTO) throws Exception;
 	//delete

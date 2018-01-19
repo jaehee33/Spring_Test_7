@@ -1,5 +1,7 @@
 package com.iu.board;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO {
 	
 	private int num;
@@ -8,7 +10,7 @@ public class BoardDTO {
 	private String contents;
 	private String reg_date;
 	private int hit;
-	
+
 	public int getNum() {
 		return num;
 	}

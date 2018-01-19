@@ -3,11 +3,13 @@ package com.iu.s7;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.board.BoardDTO;
@@ -23,9 +25,9 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeList")
 	public ModelAndView selectList(ListData listData) throws Exception{
-		System.out.println("search: "+listData.getSearch());
+/*		System.out.println("search: "+listData.getSearch());
 		System.out.println("kind: "+listData.getKind());
-		System.out.println("curPage: "+listData.getCurPage());
+		System.out.println("curPage: "+listData.getCurPage());*/
 		ModelAndView mv = new ModelAndView();
 		List<BoardDTO> ar = noticeService.selectList(listData);
 		mv.addObject("list", ar);
@@ -41,8 +43,8 @@ public class NoticeController {
 		return "board/boardWrite";
 	}
 	@RequestMapping(value="noticeWrite", method=RequestMethod.POST)
-	public String insert2(BoardDTO boardDTO) throws Exception{
-		noticeService.insert(boardDTO);
+	public String insert2(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception{
+		noticeService.insert(boardDTO, f1, session);
 		return "redirect:./noticeList";
 		
 		//common 방법
