@@ -46,8 +46,8 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int insert(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception {
-		int num = noticeDAO.num();
-		boardDTO.setNum(num);
+		
+		
 		noticeDAO.insert(boardDTO);
 		FileSaver fileSaver = new FileSaver();
 		String filePath = session.getServletContext().getRealPath("resources/upload");
@@ -62,7 +62,7 @@ public class NoticeService implements BoardService {
 			FileDTO fileDTO = new FileDTO();
 			fileDTO.setFname(names.get(i));
 			fileDTO.setOname(f1[i].getOriginalFilename());
-			fileDTO.setNum(num);
+			fileDTO.setNum(boardDTO.getNum());
 			fileDAO.insert(fileDTO);
 		}
 		

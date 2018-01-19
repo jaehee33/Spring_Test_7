@@ -18,22 +18,6 @@
   		</if>
   	</select>
   	
-  	<insert id="insert" parameterType="QnaDTO">
-  		insert into qna values(qna_seq.nextval,#{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval, 0, 0)
-  	</insert>
-  	
-  	<update id="update" parameterType="QnaDTO">
-  		update qna set title=#{title}, contents=#{contents} where num=#{num}
-  	</update>
-  	
-  	<delete id="delete" parameterType="int">
-  		delete qna where num=#{num}
-  	</delete>
-  	
-  	<select id="selectOne" parameterType="int" resultType="QnaDTO">
-  		select * from qna where num=#{num}
-  	</select>
-  	
   	<select id="selectList" parameterType="ListData" resultType="QnaDTO">
   		select * from (select rownum R, N.* from (select * from qna 
   		<if test="kind == 'title'">
@@ -47,6 +31,26 @@
   		</if>
   		order by ref desc, step asc) N) where R between 1 and 10
   	</select>
+  	
+  	<select id="selectOne" parameterType="int" resultType="QnaDTO">
+  		select * from qna where num=#{num}
+  	</select>
+  	
+  	<insert id="insert" parameterType="QnaDTO">
+  		<selectKey resultType="int" order="BEFORE" keyProperty="num">
+  			select qna_seq.nextval from dual
+  		</selectKey>
+  		insert into qna values(#{num},#{title}, #{writer}, #{contents}, sysdate, 0, qna_seq.currval, 0, 0)
+  	</insert>
+  	
+  	<update id="update" parameterType="QnaDTO">
+  		update qna set title=#{title}, contents=#{contents} where num=#{num}
+  	</update>
+  	
+  	<delete id="delete" parameterType="int">
+  		delete qna where num=#{num}
+  	</delete>
+  	
   	
   	<update id="replyup" parameterType="QnaDTO">
   		<![CDATA[ update qna set step=step+1 where ref=#{ref} and step>#{step} ]]>

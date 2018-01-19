@@ -3,11 +3,13 @@ package com.iu.s7;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -42,8 +44,8 @@ public class QnaController {
 		return mv;
 	}
 	@RequestMapping(value="qnaWrite", method=RequestMethod.POST)
-	public String insert2(QnaDTO qnaDTO, RedirectAttributes ra) throws Exception{
-		int result = qnaService.insert(qnaDTO);
+	public String insert2(QnaDTO qnaDTO, MultipartFile [] f1, HttpSession session, RedirectAttributes ra) throws Exception{
+		int result = qnaService.insert(qnaDTO, f1, session);
 		String message="Fail";
 		if(result>0){
 			message="Success";
