@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	var i=0;
@@ -47,20 +47,21 @@ $(function(){
 </head>
 <body>
 	<h1>${board}Write</h1>
-	<form action="./${board}Write" method="POST" enctype="multipart/form-data">
+	<form action="./${board}Write" method="POST"
+		enctype="multipart/form-data">
 		title: <input type="text" name="title"> 
-		writer: <input type="text" name="writer">
+		writer: <input type="text" name="writer"> 
 		contents: <input type="text" name="contents">
-		
+
 		<form action="./${board}Write" method="POST" enctype="multipart/form-data">
-		<div id="result">
-		</div>
-		<p><input type="button" id="btn" value="fileAdd"></p>
-		<button>save</button>
+			<div id="result">
+				<p><input type="button" id="btn" value="fileAdd"></p>
+			</div>
+			<button>save</button>
 		</form>
 	</form>
 			<div id="ex">
-				<input type="file" name="f1"><span class="x">xxxxxxx</span>
+				<input type="file" name="f1"><span class="x">x</span>
 			</div>
 </body>
 </html>

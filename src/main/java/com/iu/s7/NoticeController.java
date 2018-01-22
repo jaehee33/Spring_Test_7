@@ -25,6 +25,30 @@ public class NoticeController {
 	@Inject
 	private NoticeService noticeService;
 	
+	@RequestMapping(value="noticeUpdate", method=RequestMethod.GET)
+	public String update(int num, Model model) throws Exception{
+		BoardDTO boardDTO = noticeService.selectOne(num);
+		model.addAttribute("view", boardDTO);
+		model.addAttribute("board", "notice");
+		return "board/boardUpdate";
+	}
+	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST)
+	public ModelAndView update1(BoardDTO boardDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.update(boardDTO);
+		if(result>0){
+		}
+		mv.setViewName("board/boardList");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="noticeDelete")
+	public String delete(int num, HttpSession session) throws Exception{
+		int result=noticeService.delete(num, session);
+		return "redirect:./noticeList";
+	}
+	
 	@RequestMapping(value="noticeView", method=RequestMethod.GET)
 	public ModelAndView selectOne(int num) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -34,8 +58,6 @@ public class NoticeController {
 		mv.setViewName("board/boardView");
 		return mv;
 	}
-	
-	
 	
 	@RequestMapping(value="noticeList")
 	public ModelAndView selectList(ListData listData) throws Exception{

@@ -20,6 +20,6 @@ public interface BoardService {
 	//update
 	public int update(BoardDTO boardDTO) throws Exception;
 	//delete
-	public int delete(int num) throws Exception;
+	public int delete(int num, HttpSession session) throws Exception;
 
 }

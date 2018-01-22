@@ -14,4 +14,11 @@
   		insert into files values(board_seq.nextval,#{num},#{fname},#{oname})
   	</insert>
   	
+  	<delete id="delete" parameterType="int">
+  		delete files where num=#{num}
+  	</delete>
+  	<delete id="deleteFn" parameterType="int">
+  		delete files where fn=#{fn}
+  	</delete>
+  	
   </mapper>
