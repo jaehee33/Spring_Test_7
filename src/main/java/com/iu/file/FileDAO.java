@@ -14,6 +14,12 @@ public class FileDAO {
 	private SqlSession sqlsession;
 	private final String NAMESPACE="FileMapper.";
 	
+	public int update(int num) throws Exception{
+		return sqlsession.update(NAMESPACE+"update", num);
+	}
+	public int updateFn(int fn) throws Exception{
+		return sqlsession.update(NAMESPACE+"updateFn", fn);
+	}
 	public int delete(int num) throws Exception{
 		return sqlsession.delete(NAMESPACE+"delete", num);
 	}

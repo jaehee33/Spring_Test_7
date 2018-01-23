@@ -20,5 +20,11 @@
   	<delete id="deleteFn" parameterType="int">
   		delete files where fn=#{fn}
   	</delete>
+  	<update id="update" parameterType="int">
+  		update files set where num=#{num}
+  	</update>
+  	<update id="updateFn" parameterType="int">
+  		update files set where fn=#{fn}
+  	</update>
   	
   </mapper>

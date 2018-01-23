@@ -67,9 +67,21 @@ public class QnaService implements BoardService {
 	}
 
 	@Override
-	public int delete(int num) throws Exception {
+	public int delete(int num, HttpSession session) throws Exception {
+		String filePath = session.getServletContext().getRealPath("resources/update");
+		List<FileDTO> ar = fileDAO.selectList(num);
+		int result = qnaDAO.delete(num);
+		result = fileDAO.delete(num);
+		for(FileDTO fileDTO: ar){
+			try{
+			File file = new File(filePath, fileDTO.getFname());
+			file.delete();
+			}catch(Exception e){
+			}
+		}
 		return qnaDAO.delete(num);
 	}
+	
 	public int replyin(BoardDTO boardDTO) throws Exception{
 		qnaDAO.replyup(boardDTO);
 		return qnaDAO.replyin(boardDTO);

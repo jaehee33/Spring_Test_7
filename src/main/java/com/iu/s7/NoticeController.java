@@ -33,13 +33,9 @@ public class NoticeController {
 		return "board/boardUpdate";
 	}
 	@RequestMapping(value="noticeUpdate", method=RequestMethod.POST)
-	public ModelAndView update1(BoardDTO boardDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = noticeService.update(boardDTO);
-		if(result>0){
-		}
-		mv.setViewName("board/boardList");
-		return mv;
+	public String update1(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception{
+		int result = noticeService.update(boardDTO, f1, session);
+		return "redirect:./noticeList";
 	}
 	
 	

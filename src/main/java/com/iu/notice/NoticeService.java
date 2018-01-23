@@ -69,8 +69,23 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int update(BoardDTO boardDTO) throws Exception {
-		return noticeDAO.update(boardDTO);
+	public int update(BoardDTO boardDTO, MultipartFile [] f1, HttpSession session) throws Exception {
+		FileSaver fileSaver = new FileSaver();
+		String filePath = session.getServletContext().getRealPath("resources/upload");
+		File file = new File(filePath);
+		if(!file.exists()){
+			file.mkdirs();
+		}
+		List<String> names = fileSaver.save(f1, filePath);
+		
+		for(int i=0; i<names.size(); i++){
+			FileDTO fileDTO = new FileDTO();
+			fileDTO.setFname(names.get(i));
+			fileDTO.setOname(f1[i].getOriginalFilename());
+			fileDTO.setNum(boardDTO.getNum());
+			fileDAO.update(i);
+		}
+		return 1;
 	}
 
 	@Override

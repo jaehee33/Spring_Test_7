@@ -25,6 +25,12 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	
+	@RequestMapping(value="qnaDelete")
+	public String delete(int num, HttpSession session) throws Exception{
+		int result=qnaService.delete(num, session);
+		return "redirect:./qnaList";
+	}
+	
 	@RequestMapping(value="qnaView", method=RequestMethod.GET)
 	public ModelAndView selectOne(int num) throws Exception{
 		ModelAndView mv = new ModelAndView();
