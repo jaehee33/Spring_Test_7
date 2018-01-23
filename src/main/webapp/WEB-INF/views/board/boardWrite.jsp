@@ -47,8 +47,7 @@ $(function(){
 </head>
 <body>
 	<h1>${board}Write</h1>
-	<form action="./${board}Write" method="POST"
-		enctype="multipart/form-data">
+	<form action="./${board}Write" method="POST" enctype="multipart/form-data">
 		title: <input type="text" name="title"> 
 		writer: <input type="text" name="writer"> 
 		contents: <input type="text" name="contents">

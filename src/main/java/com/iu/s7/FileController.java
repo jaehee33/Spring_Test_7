@@ -20,14 +20,14 @@ public class FileController {
 	@Inject
 	private FileDAO fileDAO;
 	
-	@RequestMapping(value="fileUpdate")
+/*	@RequestMapping(value="fileUpdate")
 	public String fileUpdate(FileDTO fileDTO, HttpSession session, Model model) throws Exception{
 		String filePath = session.getServletContext().getRealPath("resources/upload");
 		int result = fileDAO.updateFn(fileDTO.getFn());
 		if(result>0){
 			File file = new File(filePath, fileDTO.getFname());
 		}
-	}
+	}*/
 	
 	@RequestMapping(value="fileDelete")
 	public String fileDelete(FileDTO fileDTO, HttpSession session, Model model) throws Exception{
