@@ -8,7 +8,6 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
 <a href="./notice/noticeList">Notice</a>
 <a href="./qna/qnaList">QNA</a>
 <c:if test="${empty member }">

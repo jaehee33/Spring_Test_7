@@ -11,8 +11,8 @@
 <p>id: ${member.id}</p>
 <p>name: ${member.name}</p>
 <p>phone: ${member.phone}</p>
-<a href="./memberUpdate?id=${member.id}">update</a>
-<a href="./memberDelete">member Delete</a>
+<a href="./memberUpdate?id=${m2.id}">update</a>
+<a href="./memberDelete?id=${m2.id}">member Delete</a>
 
 </body>
 </html>
