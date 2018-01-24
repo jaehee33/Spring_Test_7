@@ -9,10 +9,15 @@
 <body>
 <h1>Member View(My Page)</h1>
 <p>id: ${member.id}</p>
+<img src="../resources/upload/${member.fname}">
 <p>name: ${member.name}</p>
 <p>phone: ${member.phone}</p>
-<a href="./memberUpdate?id=${m2.id}">update</a>
-<a href="./memberDelete?id=${m2.id}">member Delete</a>
+<p>email: ${member.email}</p>
+<p>age: ${member.age}</p>
+<p>job: ${member.job}</p>
+<a href="./memberUpdate?id=${member.id}">update</a>
+<a href="./memberDelete?id=${member.id}">member Delete</a>
+<a href="../">HOME</a>
 
 </body>
 </html>

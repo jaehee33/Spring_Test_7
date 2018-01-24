@@ -1,10 +1,7 @@
 package com.iu.member;
 
-import java.util.List;
 
-import com.iu.file.FileDTO;
-
-public class MemberDTO extends FileDTO {
+public class MemberDTO {
 	
 	private String id;
 	private String pw;
@@ -13,7 +10,8 @@ public class MemberDTO extends FileDTO {
 	private String phone;
 	private int age;
 	private String job;
-	private List<FileDTO> files;
+	private String fname;
+	private String oname;
 	
 	public String getId() {
 		return id;
@@ -57,11 +55,17 @@ public class MemberDTO extends FileDTO {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public List<FileDTO> getFiles() {
-		return files;
+	public String getFname() {
+		return fname;
 	}
-	public void setFiles(List<FileDTO> files) {
-		this.files = files;
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
 	}
 
 }

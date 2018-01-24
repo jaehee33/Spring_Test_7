@@ -2,6 +2,12 @@
 <html>
 <head>
 	<title>Home</title>
+<script type="text/javascript">
+ var message='${message}';
+ if(message !=''){
+ alert(message);
+ }
+</script>
 </head>
 <body>
 <h1>

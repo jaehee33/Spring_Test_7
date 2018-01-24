@@ -8,12 +8,14 @@
 </head>
 <body>
 <h1>Member Update</h1>
-<form action="memberUpdate" method="POST">
-<input type="hidden" name="id" value="${m2.id}">
-name:<input type="text" name="name" value="${m2.name}">
-email:<input type="text" name="email" value="${m2.email}">
-phone:<input type="text" name="phone" value="${m2.phone}">
-age:<input type="number" name="age" value="${m2.age}">
+<form action="memberUpdate" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="id" value="${member.id}">
+<p>pw:<input type="password" name="pw" value="${member.pw}"></p>
+<p>name:<input type="text" name="name" value="${member.name}"></p>
+<p>email:<input type="text" name="email" value="${member.email}"></p>
+<p>phone:<input type="text" name="phone" value="${member.phone}"></p>
+<p>age:<input type="number" name="age" value="${member.age}"></p>
+<p>photo: <span>${member.oname} x</span></p>
 <button>Update</button>
 </form>
 </body>
