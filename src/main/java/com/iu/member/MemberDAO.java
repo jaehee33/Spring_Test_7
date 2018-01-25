@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 @Repository
 public class MemberDAO {
@@ -18,7 +19,7 @@ public class MemberDAO {
 	public MemberDTO memberLogin(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"selectOne", memberDTO);
 	}
-	public int memberUpdate(MemberDTO memberDTO) throws Exception{
+	public int memberUpdate(MemberDTO memberDTO, MultipartFile f1) throws Exception{
 		return sqlSession.update(NAMESPACE+"update", memberDTO);
 	}
 	public int memberDelete(MemberDTO memberDTO) throws Exception{

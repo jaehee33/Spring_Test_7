@@ -1,5 +1,7 @@
 package com.iu.s7;
 
+import java.io.File;
+
 import javax.inject.Inject;
 import javax.jws.WebParam.Mode;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iu.member.MemberDTO;
 import com.iu.member.MemberService;
+import com.iu.util.FileSaver;
 
 @Controller
 @RequestMapping(value="/member/**")
@@ -58,15 +61,14 @@ public class MemberController {
 	}
 	/*update*/
 	@RequestMapping(value="memberUpdate", method=RequestMethod.GET)
-	public void update()throws Exception{
-
+	public void update(){
 	}
 	@RequestMapping(value="memberUpdate", method=RequestMethod.POST)
-	public ModelAndView update2(MemberDTO memberDTO, HttpSession session)throws Exception{
+	public ModelAndView update2(MemberDTO memberDTO, HttpSession session, MultipartFile f1)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.memberUpdate(memberDTO);
+		int result = memberService.memberUpdate(memberDTO, f1, session);
 		if(result>0){
-			session.setAttribute("m2", memberDTO);
+			session.setAttribute("member", memberDTO);
 			mv.addObject("message", "update success");
 		}else{
 			mv.addObject("message", "update2 fail");

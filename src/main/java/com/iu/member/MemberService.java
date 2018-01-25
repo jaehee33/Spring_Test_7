@@ -46,8 +46,22 @@ public class MemberService {
 			file.delete(); //여기는 boolean 타입이 온다. 그걸로 제어할수 있다.
 		return memberDAO.memberDelete(memberDTO);
 	}
-	public int memberUpdate(MemberDTO memberDTO) throws Exception{
-		return memberDAO.memberUpdate(memberDTO);
+	public int memberUpdate(MemberDTO memberDTO, MultipartFile f1, HttpSession session) throws Exception{
+		if(f1 != null){
+			String filePath = session.getServletContext().getRealPath("resources/upload");
+			File file = new File(filePath);
+			if(file.exists()){
+				file.mkdirs();
+			}
+			FileSaver fileSaver = new FileSaver();
+			String fileName = fileSaver.save(f1, filePath);
+			memberDTO.setFname(fileName);
+			memberDTO.setOname(f1.getOriginalFilename());
+		}else{
+			memberDTO.setFname(((MemberDTO)session.getAttribute("member")).getFname());
+			memberDTO.setOname(((MemberDTO)session.getAttribute("member")).getOname());	
+		}
+		return memberDAO.memberUpdate(memberDTO, f1);
 	}
 	public MemberDTO memberIdCheck(String id) throws Exception{
 		return memberDAO.memberIdCheck(id);
