@@ -24,5 +24,7 @@
 <a href="./member/memberView">View</a>
 <a href="./member/memberLogout">Logout</a>
 </c:if>
+
+<a href="./transfer">transport</a>
 </body>
 </html>
