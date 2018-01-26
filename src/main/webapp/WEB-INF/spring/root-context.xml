@@ -27,11 +27,18 @@
 		<property name="maxUploadSize" value="10485760"/> <!-- 업로드 사이즈 10메가 제한 -->
 	</bean>
 	
+	<!-- *************************** AOP *************************** -->
 	<bean class="com.iu.aop.transfer.CardCheck" id="cardCheck"/>
+	<bean class="com.iu.aop.transfer.Ticket" id="ticket"/>
 	<aop:config>
 		<aop:aspect id="cardAspect" ref="cardCheck">
 			<aop:pointcut expression="execution(* com.iu.aop.transfer..Transport.*())" id="trans"/>
 			<aop:around method="check" pointcut-ref="trans"/>
+		</aop:aspect>
+		
+		<aop:aspect id="tripAspect" ref="ticket">
+			<aop:pointcut expression="execution(* com.iu.aop.transfer..Trip.*())" id="t"/>
+			<aop:before method="getTicket" pointcut-ref="t"/>
 		</aop:aspect>
 	</aop:config>
 		
